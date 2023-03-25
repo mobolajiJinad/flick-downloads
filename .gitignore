@@ -1,0 +1,7 @@
+# .env files
+config/config.env
+
+# node modules
+node_modules
+
+todos.txt
