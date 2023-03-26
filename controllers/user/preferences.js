@@ -46,7 +46,7 @@ const addGenrePreference = async (req, res) => {
     validGenresWithID = validGenresWithID.filter(
       (genre) =>
         !preference.genres.some(
-          (preferenceGenre) => preferenceGenre.id === genre.id
+          (preferenceGenre) => preferenceGenre._id === genre._id
         )
     );
     preference.genres.push(...validGenresWithID);

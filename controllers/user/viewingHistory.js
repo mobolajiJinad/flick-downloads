@@ -60,7 +60,7 @@ const addViewingHistory = async (req, res, next) => {
 
     const addedDocs = await ViewingHistory.find({
       _id: {
-        $in: result.insertedIds,
+        $in: Object.values(result.insertedIds),
       },
     });
 
