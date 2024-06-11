@@ -1,7 +1,7 @@
-import Head from "next/head";
 import Image from "next/image";
 import React from "react";
 import Link from "next/link";
+import Script from "next/script";
 import { Download } from "lucide-react";
 
 import { buttonVariants } from "@/components/ui/button";
@@ -9,19 +9,26 @@ import MovieContainer from "@/components/MovieContainer";
 import getImagePath from "@/lib/getImagePath";
 import { getMovieDetails, getPopularMovies } from "@/lib/getMovies";
 
+export async function generateMetadata({ params: { id } }) {
+  const details = await getMovieDetails(id);
+
+  return {
+    title: `${details?.original_title} - Flicks download`,
+    description: details?.overview,
+  };
+}
+
 const MovieDetails = async ({ params: { id } }) => {
   const details = await getMovieDetails(id);
   const popularMovies = await getPopularMovies();
 
   return (
     <div>
-      <Head>
-        <title>{details?.original_title} - Flicks download</title>
-        <script
-          type="text/javascript"
-          src="//pl23526743.highrevenuenetwork.com/a2/cd/11/a2cd11f7882526639fd3c18b119dc59b.js"
-        ></script>
-      </Head>
+      <Script
+        type="text/javascript"
+        strategy="beforeInteractive"
+        src="//pl23526743.highrevenuenetwork.com/a2/cd/11/a2cd11f7882526639fd3c18b119dc59b.js"
+      ></Script>
 
       <div className="px-10">
         <div className="flex flex-col items-center gap-5 py-10 lg:flex-row">
@@ -87,7 +94,7 @@ const MovieDetails = async ({ params: { id } }) => {
             <Link
               href="https://www.highrevenuenetwork.com/ep6tus7i?key=cceefa56cb985bbb2eceda6bcd7298af"
               target="_blank"
-              className={`${buttonVariants({ variant: "outline" })} w-full md:w-1/2`}
+              className={`${buttonVariants({ variant: "outline" })} w-full sm:w-1/2`}
             >
               <Download className="mr-2 h-4 w-4" />
               Download
