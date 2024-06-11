@@ -1,11 +1,12 @@
 "use client";
 
+
+import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
+import { z } from "zod";
 
 import { Form, FormField, FormItem, FormControl } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
-import { useRouter } from "next/navigation";
-import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 
 const formSchema = z.object({ input: z.string().min(2).max(30) });
@@ -19,7 +20,7 @@ const SearchInput = () => {
   });
 
   const onSubmit = (values) => {
-    router.push(`/search.${values.input}`);
+    router.push(`/search/${values.input}`);
     form.reset();
   };
 
@@ -27,7 +28,7 @@ const SearchInput = () => {
     <Form {...form}>
       <form
         onSubmit={form.handleSubmit(onSubmit)}
-        className="space-y-1 text-black"
+        className="space-y-0.5 text-black sm:space-y-1"
       >
         <FormField
           control={form.control}

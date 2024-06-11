@@ -1,3 +1,6 @@
+import { ChevronDown } from "lucide-react";
+import Link from "next/link";
+
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -6,8 +9,6 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { ChevronDown } from "lucide-react";
-import Link from "next/link";
 
 const GenreDropdown = async () => {
   const url = "https://api.themoviedb.org/3/genre/movie/list?language=en";

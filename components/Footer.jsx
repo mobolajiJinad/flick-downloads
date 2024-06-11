@@ -54,7 +54,7 @@ const Footer = () => {
         </h2>
         <Link href={"/"}>
           <Image
-            src="/next.svg"
+            src="/flickDownloads.png"
             alt="Logo"
             width={120}
             height={100}
