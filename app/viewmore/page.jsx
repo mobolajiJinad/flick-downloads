@@ -4,6 +4,7 @@ import {
   getPopularMovies,
   getTopRatedMovies,
   getUpcomingMovies,
+  getDiscoverMovies,
 } from "@/lib/getMovies";
 
 const ViewMorePage = async ({ searchParams: { title } }) => {
@@ -11,12 +12,20 @@ const ViewMorePage = async ({ searchParams: { title } }) => {
 
   if (title === "Now Playing") {
     movies = await getNowPlayingMovies();
-  } else if (title === "Upcoming") {
+  } else if (title === "upcoming") {
     movies = await getUpcomingMovies();
   } else if (title === "Top Rated") {
     movies = await getTopRatedMovies();
   } else if (title === "Popular") {
     movies = await getPopularMovies();
+  } else if (title === "action") {
+    movies = await getDiscoverMovies(28);
+  } else if (title === "animation") {
+    movies = await getDiscoverMovies(16);
+  } else if (title === "adventure") {
+    movies = await getDiscoverMovies(12);
+  } else if (title === "Comedy") {
+    movies = await getDiscoverMovies(35);
   }
 
   return (

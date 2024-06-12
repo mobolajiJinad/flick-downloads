@@ -1,6 +1,7 @@
 import Carousel from "@/components/Carousel";
 import MovieContainer from "@/components/MovieContainer";
 import {
+  getDiscoverMovies,
   getNowPlayingMovies,
   getPopularMovies,
   getTopRatedMovies,
@@ -12,6 +13,10 @@ export default async function Home() {
   const upcomingMovies = await getUpcomingMovies();
   const topRatedMovies = await getTopRatedMovies();
   const popularMovies = await getPopularMovies();
+  const actionMovies = await getDiscoverMovies(28);
+  const adventureMovies = await getDiscoverMovies(12);
+  const comedyMovies = await getDiscoverMovies(35);
+  const animationMovies = await getDiscoverMovies(16);
 
   return (
     <main>
@@ -19,9 +24,13 @@ export default async function Home() {
 
       <div className="flex flex-col space-y-2">
         <MovieContainer movies={nowPlayingMovies} title="Now Playing" />
-        <MovieContainer movies={upcomingMovies} title="Upcoming" />{" "}
-        <MovieContainer movies={topRatedMovies} title="Top Rated" />{" "}
-        <MovieContainer movies={popularMovies} title="Popular" />{" "}
+        <MovieContainer movies={topRatedMovies} title="Top Rated" />
+        <MovieContainer movies={popularMovies} title="Popular" />
+        <MovieContainer movies={actionMovies} title="action" />
+        <MovieContainer movies={animationMovies} title="animation" />
+        <MovieContainer movies={adventureMovies} title="adventure" />
+        <MovieContainer movies={comedyMovies} title="Comedy" />
+        <MovieContainer movies={upcomingMovies} title="upcoming" />
       </div>
     </main>
   );

@@ -6,7 +6,9 @@ const GenrePage = async ({ params: { id }, searchParams: { genre } }) => {
 
   return (
     <div className="mx-auto max-w-screen-xl py-10">
-      <h2 className="mb-5 px-10 text-4xl font-bold">Results for {genre}</h2>
+      <h2 className="mb-5 px-10 text-2xl font-bold sm:text-4xl">
+        Results for {genre}
+      </h2>
       <MovieContainer movies={movies} title="Genre" isVertical />
     </div>
   );

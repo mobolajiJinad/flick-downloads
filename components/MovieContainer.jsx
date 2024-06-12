@@ -1,7 +1,9 @@
 import Link from "next/link";
+import { Suspense } from "react";
 
 import MovieCard from "@/components/MovieCard";
 import { cn } from "@/lib/utils";
+import { MovieContainerSkeleton } from "@/components/Skeletons";
 
 const MovieContainer = ({ title, movies, isVertical }) => {
   return (
@@ -18,33 +20,37 @@ const MovieContainer = ({ title, movies, isVertical }) => {
         <span className="absolute -bottom-[1.5px] left-0 z-10 inline-block h-1 w-16 bg-red-600"></span>
       </div>
 
-      <div
-        className={cn(
-          "scrollbar-hide flex space-x-4 overflow-scroll px-5 py-5 lg:px-10",
-          isVertical && "flex-col space-x-0 space-y-12",
-        )}
-      >
-        {isVertical
-          ? movies?.map((movie) => (
-              <div
-                key={movie.id}
-                className={cn(
-                  isVertical &&
-                    "mb-5 flex flex-col items-center space-x-5 space-y-5 lg:flex-row",
-                )}
-              >
-                <MovieCard movie={movie} />
-                <div className="max-w-2xl">
-                  <p className="font-bold">
-                    {movie?.title} ({movie?.release_date?.split("-")[0]})
-                  </p>
-                  <hr className="mb-3" />
-                  <p>{movie?.overview}</p>
+      <Suspense fallback={<MovieContainerSkeleton />}>
+        <div
+          className={cn(
+            "flex space-x-4 overflow-scroll px-5 py-5 scrollbar-hide lg:px-10",
+            isVertical && "flex-col space-x-0 space-y-12",
+          )}
+        >
+          {isVertical
+            ? movies?.map((movie) => (
+                <div
+                  key={movie.id}
+                  className={cn(
+                    isVertical &&
+                      "mb-5 flex flex-col items-center space-x-5 space-y-5 lg:flex-row",
+                  )}
+                >
+                  <MovieCard movie={movie} />
+                  <div className="max-w-2xl">
+                    <p className="font-bold">
+                      {movie?.title} ({movie?.release_date?.split("-")[0]})
+                    </p>
+                    <hr className="mb-3" />
+                    <p>{movie?.overview}</p>
+                  </div>
                 </div>
-              </div>
-            ))
-          : movies?.map((movie) => <MovieCard key={movie?.id} movie={movie} />)}
-      </div>
+              ))
+            : movies?.map((movie) => (
+                <MovieCard key={movie?.id} movie={movie} />
+              ))}
+        </div>
+      </Suspense>
     </div>
   );
 };

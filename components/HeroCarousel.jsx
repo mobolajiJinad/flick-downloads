@@ -15,7 +15,7 @@ const HeroCarousel = ({ movies }) => {
     <div className="relative cursor-pointer overflow-hidden" ref={emblaRef}>
       <div className="flex">
         {movies.map((movie) => (
-          <div key={movie.id} className="flex-full relative min-w-0">
+          <div key={movie.id} className="relative min-w-0 flex-full">
             <Image
               src={getImagePath(movie?.backdrop_path, true)}
               alt={movie?.title}
@@ -23,9 +23,13 @@ const HeroCarousel = ({ movies }) => {
               height={1080}
             />
 
-            <div className="absolute left-0 top-0 z-10 hidden h-full w-full space-y-5 bg-transparent bg-gradient-to-r from-gray-900/90 via-transparent to-transparent p-10 pt-40 text-white lg:inline xl:pt-72">
-              <h2 className="max-w-xl text-5xl font-bold">{movie?.title}</h2>
-              <p className="line-clamp-3 max-w-xl">{movie?.overview}</p>
+            <div className="absolute left-0 top-0 z-10 h-full w-full space-y-5 bg-transparent bg-gradient-to-r from-gray-900/90 via-transparent to-transparent p-10 pt-28 text-white sm:pt-40 lg:inline xl:pt-72">
+              <h2 className="max-w-xl text-xl font-bold sm:text-5xl">
+                {movie?.title}
+              </h2>
+              <p className="line-clamp-3 hidden max-w-xl sm:block">
+                {movie?.overview}
+              </p>
             </div>
           </div>
         ))}
