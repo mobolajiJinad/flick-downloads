@@ -2,18 +2,18 @@ import Link from "next/link";
 import Image from "next/image";
 
 const infos = [
-  { title: "About us", href: "/about" },
-  { title: "Contact us", href: "/contact" },
-  { title: "Terms & Conditions", href: "/terms" },
-  { title: "Privacy Policy", href: "/privacy" },
-  { title: "Press", href: "/press" },
+  { title: "About us", href: "/" },
+  { title: "Contact us", href: "/" },
+  { title: "Terms & Conditions", href: "/" },
+  { title: "Privacy Policy", href: "/" },
+  { title: "Press", href: "/" },
 ];
 
 const categories = [
-  { title: "Videos", href: "/videos" },
-  { title: "Gaming", href: "/gaming" },
-  { title: "Music", href: "/music" },
-  { title: "Sports", href: "/sports" },
+  { title: "Videos", href: "/" },
+  { title: "Gaming", href: "/" },
+  { title: "Music", href: "/" },
+  { title: "Sports", href: "/" },
 ];
 
 const Information = ({ category }) => {
