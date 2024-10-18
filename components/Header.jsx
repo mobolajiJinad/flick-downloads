@@ -8,7 +8,6 @@ import ThemeToggler from "@/components/ThemeToggler";
 const Header = () => {
   return (
     <div className="sticky top-0 z-50 flex w-full items-center justify-between gap-4 bg-[#12121280] p-2 backdrop-blur-2xl transition-colors sm:p-4 md:gap-0">
-      {/* put logo image here */}
       <Link href={"/"}>
         <Image
           src="/flickDownloads.png"

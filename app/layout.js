@@ -1,5 +1,4 @@
 import { Inter } from "next/font/google";
-import Script from "next/script";
 
 import "./globals.css";
 import { ThemeProvider } from "@/components/ThemeProvider";
@@ -27,11 +26,6 @@ export default function RootLayout({ children }) {
           {children}
           <Footer />
         </ThemeProvider>
-
-        <Script
-          type="text/javascript"
-          src="//pl23535124.highrevenuenetwork.com/da/0d/28/da0d28a2f29984c6bfc234d160bb50f4.js"
-        ></Script>
       </body>
     </html>
   );

@@ -23,14 +23,26 @@ export default async function Home() {
       <Carousel />
 
       <div className="flex flex-col space-y-2">
-        <MovieContainer movies={nowPlayingMovies} title="Now Playing" />
-        <MovieContainer movies={topRatedMovies} title="Top Rated" />
-        <MovieContainer movies={popularMovies} title="Popular" />
-        <MovieContainer movies={actionMovies} title="action" />
-        <MovieContainer movies={animationMovies} title="animation" />
-        <MovieContainer movies={adventureMovies} title="adventure" />
-        <MovieContainer movies={comedyMovies} title="Comedy" />
-        <MovieContainer movies={upcomingMovies} title="upcoming" />
+        <MovieContainer
+          movies={nowPlayingMovies}
+          title="Now Playing"
+          searchQuery="Now Playing"
+        />
+        <MovieContainer
+          movies={topRatedMovies}
+          title="Top Rated"
+          searchQuery="Top Rated"
+        />
+        <MovieContainer
+          movies={popularMovies}
+          title="Popular"
+          searchQuery="Popular"
+        />
+        <MovieContainer
+          movies={upcomingMovies}
+          title="upcoming"
+          searchQuery="upcoming"
+        />
       </div>
     </main>
   );

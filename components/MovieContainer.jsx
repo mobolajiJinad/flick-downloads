@@ -5,18 +5,19 @@ import MovieCard from "@/components/MovieCard";
 import { cn } from "@/lib/utils";
 import { MovieContainerSkeleton } from "@/components/Skeletons";
 
-const MovieContainer = ({ title, movies, isVertical }) => {
+const MovieContainer = ({ title, movies, isVertical, searchQuery }) => {
   return (
     <div>
       <div className="relative mx-10 mb-4 flex items-center justify-between border-b border-b-gray-500 py-2">
         <h2 className="text-sm font-bold uppercase tracking-wider">{title}</h2>
-        <Link
-          href={{ pathname: "/viewmore", query: { title: title } }}
-          className="rounded-md border-indigo-600 bg-gray-800 px-2 py-1 text-xs font-semibold uppercase text-white duration-300 hover:bg-black"
-        >
-          view more
-        </Link>
-
+        {searchQuery && (
+          <Link
+            href={{ pathname: "/viewmore", query: { title: searchQuery } }}
+            className="rounded-md border-indigo-600 bg-gray-800 px-2 py-1 text-xs font-semibold uppercase text-white duration-300 hover:bg-black"
+          >
+            view more
+          </Link>
+        )}
         <span className="absolute -bottom-[1.5px] left-0 z-10 inline-block h-1 w-16 bg-red-600"></span>
       </div>
 

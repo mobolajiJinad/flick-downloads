@@ -1,13 +1,12 @@
 import Image from "next/image";
 import React from "react";
 import Link from "next/link";
-import Script from "next/script";
 import { Download } from "lucide-react";
 
 import { buttonVariants } from "@/components/ui/button";
 import MovieContainer from "@/components/MovieContainer";
 import getImagePath from "@/lib/getImagePath";
-import { getMovieDetails, getPopularMovies } from "@/lib/getMovies";
+import { getMovieDetails, getSimilarMovies } from "@/lib/getMovies";
 
 export async function generateMetadata({ params: { id } }) {
   const details = await getMovieDetails(id);
@@ -20,16 +19,10 @@ export async function generateMetadata({ params: { id } }) {
 
 const MovieDetails = async ({ params: { id } }) => {
   const details = await getMovieDetails(id);
-  const popularMovies = await getPopularMovies();
+  const similar = await getSimilarMovies(id);
 
   return (
     <div>
-      <Script
-        type="text/javascript"
-        strategy="beforeInteractive"
-        src="//pl23526743.highrevenuenetwork.com/a2/cd/11/a2cd11f7882526639fd3c18b119dc59b.js"
-      ></Script>
-
       <div className="px-10">
         <div className="flex flex-col items-center gap-5 py-10 lg:flex-row">
           <div className="group h-auto w-full overflow-hidden rounded-md md:min-h-96 lg:w-1/2">
@@ -92,7 +85,7 @@ const MovieDetails = async ({ params: { id } }) => {
             </p>
 
             <Link
-              href="https://www.highrevenuenetwork.com/ep6tus7i?key=cceefa56cb985bbb2eceda6bcd7298af"
+              href="#"
               target="_blank"
               className={`${buttonVariants({ variant: "outline" })} w-full sm:w-1/2`}
             >
@@ -104,11 +97,7 @@ const MovieDetails = async ({ params: { id } }) => {
       </div>
 
       <div className="mt-6">
-        <MovieContainer
-          movies={popularMovies}
-          title="Popular Movies"
-          isVertical
-        />
+        <MovieContainer movies={similar} title="Similar Movies" isVertical />
       </div>
     </div>
   );
