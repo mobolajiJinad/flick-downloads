@@ -143,3 +143,6 @@ This project was created by Abd'Quadri (mobolajiJinad).
 ## License
 
 This project is licensed under the MIT License. See LICENSE for more information.
+# Flick Downloads
+
+An web app for checking out details of movies and discovering new ones.
